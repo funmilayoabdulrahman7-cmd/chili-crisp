@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ember &amp; Co. Chili Crisp</title>
+  <meta name="description" content="A sample scroll-driven product site: Ember &amp; Co. Chili Crisp, a fictional small-batch condiment.">
+  <meta name="theme-color" content="#e5481b">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23e5481b'/%3E%3Crect x='28' y='14' width='44' height='16' rx='4' fill='%23240b05'/%3E%3Crect x='22' y='32' width='56' height='56' rx='14' fill='%23ffcf3a'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+
+  <header class="nav">
+    <a class="logo" href="#hero">Ember &amp; Co.</a>
+    <a class="btn btn-sm" href="#buy">Shop</a>
+  </header>
+
+  <!-- The jar: one fixed element that travels and turns as you scroll -->
+  <div class="jar-stage" aria-hidden="true">
+    <div class="jar" id="jar">
+      <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="glass" x1="0" x2="1">
+            <stop offset="0" stop-color="#7a1608"/>
+            <stop offset=".5" stop-color="#d4300f"/>
+            <stop offset="1" stop-color="#5a0e05"/>
+          </linearGradient>
+          <linearGradient id="sauce" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ff6a1f"/>
+            <stop offset="1" stop-color="#b3200a"/>
+          </linearGradient>
+          <linearGradient id="lid" x1="0" x2="1">
+            <stop offset="0" stop-color="#150703"/>
+            <stop offset=".45" stop-color="#3a1a0e"/>
+            <stop offset="1" stop-color="#150703"/>
+          </linearGradient>
+          <clipPath id="bodyClip"><rect x="28" y="66" width="144" height="216" rx="28"/></clipPath>
+        </defs>
+        <ellipse cx="100" cy="290" rx="62" ry="8" fill="#000" opacity=".28"/>
+        <rect x="28" y="66" width="144" height="216" rx="28" fill="url(#glass)"/>
+        <g clip-path="url(#bodyClip)">
+          <rect x="28" y="96" width="144" height="190" fill="url(#sauce)"/>
+          <g fill="#ffcf3a" opacity=".85">
+            <circle cx="52" cy="120" r="3"/><circle cx="84" cy="108" r="2.4"/><circle cx="150" cy="130" r="3.2"/>
+            <circle cx="62" cy="258" r="3"/><circle cx="138" cy="262" r="2.6"/><circle cx="100" cy="116" r="2"/>
+          </g>
+          <g id="label" style="transform-box:fill-box;transform-origin:center">
+            <rect x="22" y="138" width="156" height="112" fill="#ffcf3a"/>
+            <rect x="22" y="138" width="156" height="6" fill="#240b05"/>
+            <rect x="22" y="244" width="156" height="6" fill="#240b05"/>
+            <text x="100" y="164" text-anchor="middle" font-family="Anton, Impact, sans-serif" font-size="13" letter-spacing="3" fill="#240b05">EMBER &amp; CO.</text>
+            <text x="100" y="200" text-anchor="middle" font-family="Anton, Impact, sans-serif" font-size="34" fill="#e5481b">CHILI</text>
+            <text x="100" y="230" text-anchor="middle" font-family="Anton, Impact, sans-serif" font-size="34" fill="#e5481b">CRISP</text>
+          </g>
+          <rect id="shine" x="44" y="76" width="14" height="196" rx="7" fill="#fff" opacity=".22"/>
+        </g>
+        <rect x="38" y="34" width="124" height="40" rx="9" fill="url(#lid)"/>
+        <rect x="38" y="58" width="124" height="6" fill="#ffcf3a"/>
+        <rect x="46" y="42" width="30" height="5" rx="2.5" fill="#fff" opacity=".18"/>
+      </svg>
+    </div>
+  </div>
+
+  <main>
+    <!-- Hero -->
+    <section class="s hero" id="hero">
+      <h1 class="mega">Chili<br>Crisp</h1>
+      <div class="hero-foot">
+        <p>Slow-fried shallots, garlic and three kinds of chili, jarred in small batches.</p>
+        <a class="btn" href="#buy">Get a jar</a>
+      </div>
+    </section>
+
+    <!-- What's inside: pink panel slides over while you scroll -->
+    <section class="s inside" id="inside">
+      <div class="sticky">
+        <h2 class="outline">What's<br>inside</h2>
+        <div class="panel" id="panel">
+          <ul class="ings">
+            <li class="ing"><span class="dot" style="--c:#e5481b"></span><div><h3>Three chilies</h3><p>Smoky guajillo, fruity arbol and a little fresh heat from Thai chilies.</p></div></li>
+            <li class="ing"><span class="dot" style="--c:#ffcf3a"></span><div><h3>Crispy shallot and garlic</h3><p>Fried slowly in sunflower oil until they snap, not soften.</p></div></li>
+            <li class="ing"><span class="dot" style="--c:#240b05"></span><div><h3>Toasted sesame</h3><p>Added at the end so it stays nutty and does not turn bitter.</p></div></li>
+            <li class="ing"><span class="dot" style="--c:#fff4e0"></span><div><h3>Sea salt, nothing else</h3><p>No preservatives and no added sugar. Keep it in the fridge after opening.</p></div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story -->
+    <section class="s story" id="story">
+      <div class="marquee" aria-hidden="true">
+        <div class="track">
+          <span>Small batch</span><span>Slow fried</span><span>Spoon it on everything</span><span>Small batch</span><span>Slow fried</span><span>Spoon it on everything</span>
+          <span>Small batch</span><span>Slow fried</span><span>Spoon it on everything</span><span>Small batch</span><span>Slow fried</span><span>Spoon it on everything</span>
+        </div>
+      </div>
+      <div class="story-body">
+        <h2 class="big">Slow-fried.<br>Fast-addictive.</h2>
+        <div class="tiles">
+          <article class="tile t1 reveal"><h3>40 min</h3><p>Every batch is fried low and slow in a single pot.</p></article>
+          <article class="tile t2 reveal"><h3>12 jars</h3><p>Per batch, so each one is checked by hand before it ships.</p></article>
+          <article class="tile t3 reveal"><h3>Eggs, noodles, ice cream</h3><p>Yes, really. Start with a teaspoon.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Finale -->
+    <section class="s finale" id="finale">
+      <h2 class="mega2">Unlock<br>the magic<br>inside<br>the jar</h2>
+      <div class="finale-foot" id="buy">
+        <a class="btn btn-lg" href="#buy">Buy a jar for $14</a>
+        <p>Sample site for a fictional product. Swap the copy, colors and jar label to make it yours.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
